@@ -1,36 +1,38 @@
 import styled from "styled-components/native";
 
-export const TaskContainer = styled.View`
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  flex: 1;
-  padding: 15px;
-  margin-bottom: 20px;
+export const Item = styled.View`
   background-color: #fff;
+  padding: 15px;
   border-radius: 10px;
-`;
-
-export const TaskLeft = styled.View`
   flex-direction: row;
   align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
 `;
 
-export const TaskSquare = styled.View`
+export const ItemLeft = styled.View`
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+`;
+
+export const Square = styled.View`
   width: 24px;
   height: 24px;
   background-color: #55bcf6;
+  opacity: 0.4;
   border-radius: 5px;
   margin-right: 15px;
 `;
 
 export const TaskTitle = styled.Text`
-  font-size: 14px;
+  max-width: 80%;
 `;
 
-export const TaskCircle = styled.View`
+export const Circle = styled.View`
   width: 12px;
   height: 12px;
-  border: 2px solid #55bcf6;
+  border-color: #55bcf6;
   border-radius: 5px;
+  border-width: 2px;
 `;

@@ -1,30 +1,64 @@
 import React, { useState } from "react";
-import { ScrollView, Text, KeyboardAvoidingView, Platform } from "react-native";
+import { ScrollView, TouchableOpacity, Text, Keyboard } from "react-native";
 import { Task } from "./components/Task";
-import {
-  AddTaskArea,
-  Container,
-  TaskInput,
-  TaskInputButton,
-  Title,
-} from "./styles";
+import * as S from "./styles";
 
 export default function App() {
-  const [task, setTask] = useState("");
-  const [tasksList, setTasksList] = useState([]);
+  const [task, setTask] = useState<string | null>();
+  const [taskItems, setTaskItems] = useState<string[] | [] | any>([]);
+
+  const handleAddTask = () => {
+    Keyboard.dismiss();
+    setTaskItems([...taskItems, task]);
+    setTask(null);
+  };
+
+  const completeTask = (index: number) => {
+    let itemsCopy = [...taskItems];
+    itemsCopy.splice(index, 1);
+    setTaskItems(itemsCopy);
+  };
 
   return (
-    <Container>
-      <Title>Tarefas do dia</Title>
-      <ScrollView>
-        <Task />
+    <S.Container>
+      {/* Show task */}
+      <ScrollView
+        contentContainerStyle={{
+          flexGrow: 1,
+        }}
+        keyboardShouldPersistTaps="handled"
+      >
+        <S.TasksWrapper>
+          <S.SectionTitle>Tarefas do dia</S.SectionTitle>
+          <S.ItemsContainer>
+            {taskItems != null
+              ? taskItems.map((item: string, index: number) => (
+                  <TouchableOpacity
+                    key={index}
+                    onPress={() => completeTask(index)}
+                  >
+                    <Task taskTitle={item} />
+                  </TouchableOpacity>
+                ))
+              : null}
+            {}
+          </S.ItemsContainer>
+        </S.TasksWrapper>
       </ScrollView>
-      <AddTaskArea>
-        <TaskInput placeholder="Digite uma tarefa..." />
-        <TaskInputButton>
-          <Text style={{ fontSize: 30, color: "#fff" }}>+</Text>
-        </TaskInputButton>
-      </AddTaskArea>
-    </Container>
+
+      {/* Add task */}
+      <S.WriteTaskWrapper>
+        <S.AddTaskInput
+          placeholder={"Adicione uma tarefa"}
+          value={task!} // Non-null assertion operator
+          onChangeText={(text) => setTask(text)}
+        />
+        <TouchableOpacity onPress={() => handleAddTask()}>
+          <S.AddWrapper>
+            <Text style={{ color: "#fff" }}>+</Text>
+          </S.AddWrapper>
+        </TouchableOpacity>
+      </S.WriteTaskWrapper>
+    </S.Container>
   );
 }

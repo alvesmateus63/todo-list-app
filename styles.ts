@@ -1,39 +1,50 @@
 import styled from "styled-components/native";
 
-export const Container = styled.SafeAreaView`
+export const Container = styled.View`
   flex: 1;
-  justify-content: center;
-  align-itens: center;
-  background-color: #ccc;
-  padding-top: 40px;
-  padding-left: 20px;
-  padding-right: 20px;
+  background-color: #e8eaed;
 `;
 
-export const Title = styled.Text`
-  color: #000;
+export const TasksWrapper = styled.View`
+  padding-top: 80px;
+  padding-horizontal: 20px;
+`;
+
+export const SectionTitle = styled.Text`
   font-size: 24px;
-  margin-bottom: 20px;
+  font-weight: bold;
 `;
 
-export const AddTaskArea = styled.View`
+export const ItemsContainer = styled.View`
+  margin-top: 30px;
+`;
+
+export const WriteTaskWrapper = styled.KeyboardAvoidingView`
+  position: absolute;
+  bottom: 60px;
+  width: 100%;
   flex-direction: row;
   justify-content: space-around;
-  margin-bottom: 20px;
-`;
-
-export const TaskInput = styled.TextInput`
-  width: 250px;
-  padding: 10px;
-  border: 2px solid #000;
-  border-radius: 60px;
-`;
-
-export const TaskInputButton = styled.View`
-  justify-content: center;
   align-items: center;
+`;
+
+export const AddTaskInput = styled.TextInput`
+  padding-vertical: 15px;
+  padding-horizontal: 15px;
+  background-color: #fff;
+  border-radius: 60px;
+  border-color: #c0c0c0;
+  border-width: 1px;
+  width: 250px;
+`;
+
+export const AddWrapper = styled.View`
   width: 60px;
   height: 60px;
   background-color: #55bcf6;
-  border-radius: 30px;
+  border-radius: 60px;
+  justify-content: center;
+  align-items: center;
+  border-color: #c0c0c0;
+  border-width: 1px;
 `;
