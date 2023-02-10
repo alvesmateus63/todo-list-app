@@ -5,7 +5,7 @@ import * as S from "./styles";
 
 export default function App() {
   const [task, setTask] = useState<string | null>();
-  const [taskItems, setTaskItems] = useState<string[] | [] | any>([]);
+  const [taskItems, setTaskItems] = useState<string[] | [] | any>([]); // não sei oq por no lugar no any
 
   const handleAddTask = () => {
     Keyboard.dismiss();
